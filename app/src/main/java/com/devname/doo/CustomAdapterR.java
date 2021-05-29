@@ -42,7 +42,7 @@ public class CustomAdapterR extends RecyclerView.Adapter<CustomAdapterR.ViewHold
     @Override
     public void onBindViewHolder(@NonNull CustomAdapterR.ViewHolder holder, int position) {
         TaskItem currentData = taskItemArrayList.get(position);
-        holder.setDetails(currentData);
+        holder.setDetails(currentData, listener);
 
         if (position + 1 == getItemCount()) {
             // It is the last item of the list
@@ -70,7 +70,7 @@ public class CustomAdapterR extends RecyclerView.Adapter<CustomAdapterR.ViewHold
 
 
     // ViewHolder Class
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TaskItemBinding itemBinding;
 
         public ViewHolder(TaskItemBinding itemBinding) {
@@ -78,7 +78,7 @@ public class CustomAdapterR extends RecyclerView.Adapter<CustomAdapterR.ViewHold
             this.itemBinding = itemBinding;
         }
 
-        public void setDetails(TaskItem taskItem){
+        public void setDetails(TaskItem taskItem, onItemClickListener listener){
             itemBinding.taskView.setText(taskItem.getTask());
             itemBinding.dateView.setText(taskItem.getDate());
             // Triggers the above method of customClickListener
