@@ -62,6 +62,12 @@ public class TaskDetailActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+        CustomIntent.customType(this,"up-to-bottom");
+    }
+
     private String getDate(){
         Calendar calendar = Calendar.getInstance();
         calendar.set(taskDetailBinding.datePickerField.getYear(),
@@ -70,9 +76,4 @@ public class TaskDetailActivity extends AppCompatActivity implements View.OnClic
         return DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
     }
 
-    @Override
-    public void finish() {
-        super.finish();
-        CustomIntent.customType(this,"up-to-bottom");
-    }
 }

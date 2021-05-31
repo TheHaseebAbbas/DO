@@ -112,6 +112,37 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // On Options creation
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        MenuItem item = menu.findItem(R.id.search_btn);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setQueryHint(getString(R.string.search_));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                customAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        searchView.setOnQueryTextFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus){
+                mainBinding.fabBtn.hide();
+                itemTouchHelper.attachToRecyclerView(null);
+            } else {
+                mainBinding.recyclerView.scrollToPosition(0);
+                mainBinding.fabBtn.show();
+                itemTouchHelper.attachToRecyclerView(mainBinding.recyclerView);
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
 
     private void buildRecyclerView() {
         customAdapter = new CustomAdapterR(taskItemArrayList);
@@ -147,35 +178,4 @@ public class MainActivity extends AppCompatActivity {
         snackbar.show();
     }
 
-    // On Options creation
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        MenuItem item = menu.findItem(R.id.search_btn);
-        SearchView searchView = (SearchView) item.getActionView();
-        searchView.setQueryHint(getString(R.string.search_));
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                customAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-        searchView.setOnQueryTextFocusChangeListener((v, hasFocus) -> {
-            if (hasFocus){
-                mainBinding.fabBtn.hide();
-                itemTouchHelper.attachToRecyclerView(null);
-            } else {
-                mainBinding.recyclerView.scrollToPosition(0);
-                mainBinding.fabBtn.show();
-                itemTouchHelper.attachToRecyclerView(mainBinding.recyclerView);
-            }
-        });
-        return super.onCreateOptionsMenu(menu);
-    }
 }
