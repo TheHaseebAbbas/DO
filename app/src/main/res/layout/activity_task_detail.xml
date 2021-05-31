@@ -8,10 +8,14 @@
     tools:context=".TaskDetailActivity">
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/task_input_field"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:endIconMode="clear_text"
         android:layout_margin="8dp"
+        android:hint="@string/enter_task_here"
+        app:endIconMode="clear_text"
+        app:hintTextColor="@color/secondaryColor"
         app:layout_constraintBottom_toTopOf="@+id/date_picker_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/date_picker_container"
@@ -19,18 +23,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintVertical_chainStyle="packed"
-        android:id="@+id/task_input_field"
-        android:hint="@string/enter_task_here"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        >
+        app:layout_constraintVertical_chainStyle="packed">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
-            tools:text="Haseeb Abbas"
-            />
+            tools:text="Haseeb Abbas" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -40,31 +39,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toTopOf="@+id/cancel_btn"
         app:layout_constraintEnd_toEndOf="@id/task_input_field"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/task_input_field"
         app:layout_constraintTop_toBottomOf="@+id/task_input_field"
-        app:layout_constraintVertical_weight="1"
-        app:cardElevation="4dp"
-        >
+        app:layout_constraintVertical_weight="1">
 
         <DatePicker
             android:id="@+id/date_picker_field"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
 
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/cancel_btn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="@string/cancel"
         android:onClick="onClick"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:text="@string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/add_btn"
         app:layout_constraintHorizontal_bias="0.5"
@@ -77,9 +74,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="@string/add"
-        android:onClick="onClick"
         android:enabled="false"
+        android:onClick="onClick"
+        android:text="@string/add"
         app:layout_constraintBottom_toBottomOf="@+id/cancel_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

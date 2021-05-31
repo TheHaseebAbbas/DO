@@ -6,4 +6,9 @@
     <string name="add_new_task">Add New Task</string>
     <string name="tasks">Tasks</string>
     <string name="delete_task">Delete Task</string>
+    <string name="expand_or_collapse">Expand or Collapse</string>
+    <string name="search">Search</string>
+    <string name="search_">Search...</string>
+    <string name="task_added_successfully">Task Added Successfully</string>
+    <string name="task_canceled">Task Canceled</string>
 </resources>
