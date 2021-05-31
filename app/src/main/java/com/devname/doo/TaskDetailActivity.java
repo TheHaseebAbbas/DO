@@ -43,6 +43,8 @@ public class TaskDetailActivity extends AppCompatActivity implements View.OnClic
             }
         });
 
+        taskDetailBinding.addBtn.setOnClickListener(this);
+        taskDetailBinding.cancelBtn.setOnClickListener(this);
     }
 
     @Override
