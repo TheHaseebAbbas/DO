@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/minimize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/minimize"
+        android:src="@drawable/ic_baseline_maximize_"
+        app:layout_constraintBottom_toTopOf="@id/task_input_field"
+        app:layout_constraintEnd_toEndOf="@id/task_input_field"
+        app:layout_constraintStart_toStartOf="@id/task_input_field"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/task_input_field"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:hint="@string/enter_task_here"
+        app:boxStrokeColor="@color/secondaryColor"
+        app:endIconMode="clear_text"
+        app:helperText="Required*"
+        app:helperTextEnabled="true"
+        app:helperTextTextColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toTopOf="@id/date_picker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/minimize">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            tools:text="Haseeb Abbas" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/date_picker"
+        style="@style/ButtonTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="4dp"
+        android:text="@string/select_date"
+        app:icon="@drawable/ic_outline_calendar_24"
+        app:iconPadding="8dp"
+        app:layout_constraintBottom_toTopOf="@id/cancel_btn"
+        app:layout_constraintEnd_toEndOf="@id/task_input_field"
+        app:layout_constraintStart_toStartOf="@id/task_input_field"
+        app:layout_constraintTop_toBottomOf="@id/task_input_field"
+        app:strokeColor="@color/secondaryColor" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancel_btn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/cancel"
+        app:layout_constraintEnd_toStartOf="@id/add_btn"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="@id/task_input_field"
+        app:layout_constraintTop_toBottomOf="@id/date_picker"
+        app:strokeColor="@color/secondaryColor" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_btn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/secondaryColor"
+        android:enabled="false"
+        android:text="@string/add"
+        app:layout_constraintBottom_toBottomOf="@id/cancel_btn"
+        app:layout_constraintEnd_toEndOf="@id/task_input_field"
+        app:layout_constraintStart_toEndOf="@id/cancel_btn"
+        app:layout_constraintTop_toTopOf="@id/cancel_btn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

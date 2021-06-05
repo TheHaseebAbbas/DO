@@ -1,6 +1,7 @@
 package com.devname.doo;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -45,7 +46,7 @@ public class CustomAdapterR extends RecyclerView.Adapter<CustomAdapterR.ViewHold
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             taskItemArrayList.clear();
-            taskItemArrayList.addAll((Collection<TaskItem>) results.values);
+            taskItemArrayList.addAll((Collection<? extends TaskItem>) results.values);
             notifyDataSetChanged();
         }
     };
@@ -54,6 +55,7 @@ public class CustomAdapterR extends RecyclerView.Adapter<CustomAdapterR.ViewHold
         this.taskItemArrayList = taskItemArrayList;
         this.completeList = new ArrayList<>(taskItemArrayList);
     }
+
 
     // Creating Listener Interface
 /*
@@ -103,8 +105,13 @@ public class CustomAdapterR extends RecyclerView.Adapter<CustomAdapterR.ViewHold
         }
 
         public void setDetails(TaskItem taskItem){
-            itemBinding.expandableTaskView.setText(taskItem.getTask());
-            itemBinding.dateView.setText(taskItem.getDate());
+            itemBinding.taskText.setText(taskItem.getTask());
+            if (taskItem.getDate() == null){
+                itemBinding.dateView.setVisibility(View.GONE);
+            } else {
+                itemBinding.dateView.setVisibility(View.VISIBLE);
+                itemBinding.dateText.setText(taskItem.getDate());
+            }
         }
     }
 }
