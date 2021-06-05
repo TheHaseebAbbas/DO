@@ -5,59 +5,76 @@
     android:id="@+id/row_do_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="6dp"
-    app:cardCornerRadius="0dp"
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginVertical="3dp"
     android:clickable="true"
     android:focusable="true"
-    android:longClickable="true"
-    app:cardElevation="6dp"
-    >
+    app:cardCornerRadius="8dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardElevation="1dp"
+    app:strokeColor="@android:color/black"
+    app:strokeWidth="0.6dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="4dp">
-
-        <com.ms.square.android.expandabletextview.ExpandableTextView
-            android:id="@+id/expandable_task_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:maxCollapsedLines="1"
-            >
-
-            <TextView
-                android:id="@+id/expandable_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                tools:text="Haseeb Abbas" />
-
-            <ImageButton
-                android:id="@+id/expand_collapse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start|bottom"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/expand_or_collapse" />
-
-        </com.ms.square.android.expandabletextview.ExpandableTextView>
+        android:layout_margin="12dp">
 
         <TextView
+            android:id="@+id/task_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="This is an Example Task... Enter Your Task here..." />
+
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/date_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:layout_marginVertical="6dp"
+            app:cardElevation="2dp"
+            app:cardCornerRadius="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/expandable_task_view"
-            tools:text="Haseeb Abbas" />
+            app:layout_constraintStart_toStartOf="@id/task_text"
+            app:layout_constraintTop_toBottomOf="@id/task_text"
+            app:strokeColor="@android:color/black"
+            app:strokeWidth="0.4dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:layout_marginVertical="2dp">
+
+                <ImageView
+                    android:id="@+id/alarm_icon"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:contentDescription="@string/notify_me"
+                    android:src="@drawable/ic_outline_alarm_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/date_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/alarm_icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Jan 30, 2022, 8:30 PM" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
